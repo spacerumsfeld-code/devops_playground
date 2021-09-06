@@ -8,11 +8,10 @@ import {
 import { concatPagination } from "@apollo/client/utilities";
 import merge from "deepmerge";
 import isEqual from "lodash/isEqual";
-import { GetServerSidePropsContext } from "next";
 
 let apolloClient: ApolloClient<NormalizedCacheObject>;
 
-function createApolloClient(context?: GetServerSidePropsContext) {
+function createApolloClient() {
   return new ApolloClient({
     ssrMode: typeof window === "undefined",
     link: new HttpLink({
