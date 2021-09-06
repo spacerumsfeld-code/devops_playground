@@ -1,7 +1,7 @@
 SHELL := /bin/bash
 
-test:
-	@echo Hello World
-
-test2:
-	@echo Arghhhhh
+dev:
+	@echo Starting dev environment
+	lerna bootstrap
+	lerna run dev --parallel
+	@echo Dev environment running! Have fun.
