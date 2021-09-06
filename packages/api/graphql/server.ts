@@ -1,39 +1,21 @@
-import { ApolloServer, gql } from "apollo-server";
+import { ApolloServer } from "apollo-server";
+import typeDefs from "../graphql/schema";
+import { resolvers } from "../graphql/resolvers";
+import mongoose from "mongoose";
 
-const typeDefs = gql`
-  type LearningItem {
-    title: String
-    desc: String
-    extra_credit: Boolean
+const connectToDB = async () => {
+  const MONGO_URL: string = "mongodb://localhost:27017/learningDB";
+  try {
+    const connection = await mongoose.connect(MONGO_URL);
+    console.log(connection);
+  } catch (error) {
+    console.log(error);
   }
-
-  type Query {
-    learningItems: [LearningItem]
-  }
-`;
-
-const learningItems = [
-  {
-    title: "Docker-compose",
-    desc: "Make a Dockerfile for both WEB and API and fire them both up in containers",
-  },
-  {
-    title: "Custom styled-components",
-    desc: "Create a couple of custom-made components that take props",
-  },
-];
-
-const resolvers = {
-  Query: {
-    learningItems: () => learningItems,
-  },
 };
+connectToDB();
 
-// The ApolloServer constructor requires two parameters: your schema
-// definition and your set of resolvers.
 const server = new ApolloServer({ typeDefs, resolvers });
 
-// The `listen` method launches a web server.
 server.listen().then(() => {
   console.log(`🚀 Server is listening on port 4000!`);
 });

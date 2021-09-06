@@ -31,7 +31,7 @@ const Home: NextPage = (props: any) => {
         background={Colors.Grey4}
         padding="8px"
       >
-        {learningItems.map((learningItem: any) => (
+        {learningItems?.map((learningItem: any) => (
           <LearningCard key={learningItem.id}>
             {learningItem.title}: {learningItem.desc}
           </LearningCard>
