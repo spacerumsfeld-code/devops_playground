@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/spacerumsfeld-code/to-do-9000/issues"
   },
-  "homepage": "https://github.com/spacerumsfeld-code/to-do-9000#readme"
+  "homepage": "https://github.com/spacerumsfeld-code/to-do-9000#readme",
+  "dependencies": {
+    "lerna": "^4.0.0"
+  }
 }

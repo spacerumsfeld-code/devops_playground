@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/spacerumsfeld-code/to-do-9000/issues"
   },
-  "homepage": "https://github.com/spacerumsfeld-code/to-do-9000#readme"
+  "homepage": "https://github.com/spacerumsfeld-code/to-do-9000#readme",
+  "dependencies": {
+    "apollo-server": "^3.3.0",
+    "graphql": "^15.5.3"
+  }
 }
