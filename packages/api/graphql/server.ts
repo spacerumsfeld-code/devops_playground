@@ -3,16 +3,16 @@ import typeDefs from "../graphql/schema";
 import { resolvers } from "../graphql/resolvers";
 import mongoose from "mongoose";
 
-const connectToDB = async () => {
+const connectToMongo = async () => {
   const MONGO_URL: string = "mongodb://localhost:27017/learningDB";
   try {
     const connection = await mongoose.connect(MONGO_URL);
-    console.log(connection);
+    console.log("Connected to database");
   } catch (error) {
     console.log(error);
   }
 };
-connectToDB();
+connectToMongo();
 
 const server = new ApolloServer({ typeDefs, resolvers });
 

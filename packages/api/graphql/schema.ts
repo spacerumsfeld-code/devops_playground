@@ -1,14 +1,24 @@
 import { gql } from "apollo-server";
 
 const typeDefs = gql`
-  type LearningItem {
+  type Todo {
     title: String
     desc: String
-    extra_credit: Boolean
+    complete: Boolean
   }
 
   type Query {
-    learningItems: [LearningItem]
+    todos: [Todo]
+  }
+
+  type Mutation {
+    newTodo: mutationReturn
+    deleteTodo: mutationReturn
+  }
+
+  type mutationReturn {
+    message: String
+    to_do: Todo
   }
 `;
 

@@ -1,29 +1,44 @@
-import mongoose from "mongoose";
-import Learning from "../db/model";
-import { ILearningItem } from "../db/model";
-
-const learningItems = [
-  {
-    title: "Docker-compose",
-    desc: "Make a Dockerfile for both WEB and API and fire them both up in containers",
-  },
-  {
-    title: "Custom styled-components",
-    desc: "Create a couple of custom-made components that take props",
-  },
-];
+import Todos from "../db/model";
+import { ITodo } from "../db/model";
 
 export const resolvers = {
   Query: {
-    learningItems: async () => {
+    todos: async (): Promise<ITodo[] | undefined> => {
       try {
-        const learningItem = {
-          title: "Testing123",
-          desc: "Amazing",
-          extra_credit: false,
+        const todos: ITodo[] = await Todos.find({});
+        return todos;
+      } catch (error) {
+        console.log(error);
+      }
+    },
+  },
+  Mutation: {
+    newTodo: async (
+      _root: any,
+      args: any
+    ): Promise<{ message: string; to_do: ITodo }> => {
+      try {
+        const toDo = new Todos({
+          title: args.title,
+          desc: args.desc,
+          extra_credit: args.extra_credit,
+        });
+        const newTodo: ITodo = await toDo.save();
+        return {
+          message: "New To-do successfully created",
+          to_do: newTodo,
         };
-        const newLearningItem = await Learning.create(learningItem);
-        console.log(newLearningItem);
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    deleteTodo: async (_root: any, args: any) => {
+      try {
+        const deletedTodo = await Todos.findByIdAndRemove(args.id);
+        return {
+          message: "Successfully deleted todo",
+          to_do: deletedTodo,
+        };
       } catch (error) {
         console.log(error);
       }

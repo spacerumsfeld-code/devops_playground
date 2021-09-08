@@ -1,15 +1,12 @@
 import { Schema, model } from "mongoose";
 
-export interface ILearningItem {
+export interface ITodo {
   title: string;
   desc: string;
   extra_credit?: boolean;
 }
 
-/**
- * Creates new mongo scheme
- */
-const learningSchema: Schema = new Schema({
+const toDoSchema: Schema = new Schema({
   title: {
     type: String,
     required: true,
@@ -18,12 +15,11 @@ const learningSchema: Schema = new Schema({
     type: String,
     required: true,
   },
-  extra_credit: {
+  complete: {
     type: Boolean,
     required: false,
     default: false,
   },
 });
 
-// export the model
-export default model<ILearningItem>("Learning", learningSchema);
+export default model<ITodo>("Todos", toDoSchema);
