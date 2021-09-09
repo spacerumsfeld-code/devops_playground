@@ -6,10 +6,6 @@ import LearningCard from "../elements/LearningCard";
 import { initializeApollo } from "./graphql/apolloClient";
 import { TODOS } from "./graphql/queries/todo.getAllTodos.query";
 
-/** TODO: Figure out SSR with styled-components! Classnames are not consistent between server
- * and client right now.
- */
-
 const AppContainer = styled.div`
   display: flex;
   flex-direction: column;
