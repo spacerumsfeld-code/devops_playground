@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/spacerumsfeld-code/to-do-9000.git"
+    "url": "git+https://github.com/spacerumsfeld-code/devops_playground.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/spacerumsfeld-code/to-do-9000/issues"
+    "url": "https://github.com/spacerumsfeld-code/devops_playground/issues"
   },
-  "homepage": "https://github.com/spacerumsfeld-code/to-do-9000#readme",
+  "homepage": "https://github.com/spacerumsfeld-code/devops_playground#readme",
   "dependencies": {
     "lerna": "^4.0.0"
   }

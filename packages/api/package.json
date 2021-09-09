@@ -6,16 +6,8 @@
   "scripts": {
     "dev": "nodemon --watch ./graphql/server.ts"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/spacerumsfeld-code/to-do-9000.git"
-  },
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/spacerumsfeld-code/to-do-9000/issues"
-  },
-  "homepage": "https://github.com/spacerumsfeld-code/to-do-9000#readme",
   "dependencies": {
     "apollo-server": "^3.3.0",
     "graphql": "^15.5.3",
@@ -23,5 +15,6 @@
     "nodemon": "^2.0.12",
     "ts-node": "^10.2.1",
     "typescript": "^4.4.2"
-  }
+  },
+  "gitHead": "2ceee9746bb4b2650aea4f0a7df2aef8b625d80a"
 }
