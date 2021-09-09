@@ -4,7 +4,8 @@ import { resolvers } from "../graphql/resolvers";
 import mongoose from "mongoose";
 
 const connectToMongo = async () => {
-  const MONGO_URL: string = "mongodb://localhost:27017/learningDB";
+  /** localhost='database' when dockerizing */
+  const MONGO_URL: string = "mongodb://database:27017/learningDB";
   try {
     const connection = await mongoose.connect(MONGO_URL);
     console.log("Connected to database");

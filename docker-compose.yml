@@ -14,3 +14,10 @@ services:
       context: ./packages/api
     ports:
       - 4000:4000
+    depends_on:
+      - database
+  database:
+    container_name: database
+    image: mongo
+    ports:
+      - 27017:27017

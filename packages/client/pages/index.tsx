@@ -2,9 +2,9 @@ import type { NextPage } from "next";
 import styled from "styled-components";
 import Colors from "../styles/Colors";
 import GridContainer from "../elements/GridContainer";
-import LearningCard from "../elements/learningCard";
+import LearningCard from "../elements/LearningCard";
 import { initializeApollo } from "./graphql/apolloClient";
-import { LEARNING_ITEMS } from "./graphql/queries/learning.getAllItems.query";
+import { TODOS } from "./graphql/queries/todo.getAllTodos.query";
 
 /** TODO: Figure out SSR with styled-components! Classnames are not consistent between server
  * and client right now.
@@ -19,8 +19,8 @@ const AppContainer = styled.div`
 `;
 
 const Home: NextPage = (props: any) => {
-  const learningItems = props.initialApolloState.ROOT_QUERY.learningItems;
-  console.log(learningItems);
+  const todos = props.initialApolloState.ROOT_QUERY.todos;
+
   return (
     <AppContainer>
       <h1>A Good Old Time With styled-components and more!</h1>
@@ -31,7 +31,7 @@ const Home: NextPage = (props: any) => {
         background={Colors.Grey4}
         padding="8px"
       >
-        {learningItems?.map((learningItem: any) => (
+        {todos?.map((learningItem: any) => (
           <LearningCard key={learningItem.id}>
             {learningItem.title}: {learningItem.desc}
           </LearningCard>
@@ -41,11 +41,11 @@ const Home: NextPage = (props: any) => {
   );
 };
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
   const apolloClient = initializeApollo();
 
   await apolloClient.query({
-    query: LEARNING_ITEMS,
+    query: TODOS,
   });
 
   return {
