@@ -9,6 +9,7 @@ type GridContainerProps = {
   padding?: string;
   background?: string;
   columns?: string;
+  justify?: string;
 };
 
 type BodyProps = {
@@ -21,6 +22,7 @@ const Container = styled.div<GridContainerProps>`
   margin: ${(props) => props.margin || "0"};
   background: ${(props) => props.background || "white"};
   display: grid;
+  justify-items: ${(props) => props.justify};
   grid-template-columns: ${(props) => props.columns || "repeat(auto, 1fr"};
 `;
 
@@ -36,6 +38,7 @@ const GridContainer: React.FC<GridContainerProps> = ({
   background,
   children,
   columns,
+  justify,
 }) => (
   <Container
     height={height}
@@ -43,6 +46,7 @@ const GridContainer: React.FC<GridContainerProps> = ({
     columns={columns}
     background={background}
     margin={margin}
+    justify={justify}
   >
     <Body padding={padding}>{children}</Body>
   </Container>

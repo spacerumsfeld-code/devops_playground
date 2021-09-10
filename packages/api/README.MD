@@ -1,9 +1,12 @@
-### To-dos
+## Notes
 
-1. Add persistence with mongo db
-2. Include mongo db as third container in docker compose
-3. Figure out how to add already-made db to mongo db image
-4. Add gql mutation to accompany form on client
-5. Split resolvers, schema, server into separate files for separation of concerns
-6. Research 'makeExecutableSchema' as alternative for kick-starting gql service
-7. Go from there!
+1. Custom '\_document.tsx' and .babelrx + an additional plugin so styled-components and Next.JS play nicely with each other
+2. ApolloClient provided to application in \_app for query/mutations across the board
+3. You must initialize the ApolloClient INSIDE either getServerSideProps or getStaticProps in order to make GraphQL queries in server-side or static rendering
+4. Custom styled-components are tricky
+
+## Further exploration
+
+1. makeExecutableSchema as an alternative means to create GraphQL schema
+2. adding a volume to the mongo image to populate it with initial data and/or preserve data across db deletions
+3. GraphQL fragments

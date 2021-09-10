@@ -1,11 +1,13 @@
 import { gql } from "@apollo/client";
 
-export const TODOS = gql`
+const GET_TODOS = gql`
   query GetAllTodos {
     todos {
+      _id
       title
       desc
-      complete
     }
   }
 `;
+
+export default GET_TODOS;

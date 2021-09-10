@@ -2,9 +2,9 @@ import { gql } from "apollo-server";
 
 const typeDefs = gql`
   type Todo {
+    _id: String
     title: String
     desc: String
-    complete: Boolean
   }
 
   type Query {
@@ -12,13 +12,13 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    newTodo: mutationReturn
-    deleteTodo: mutationReturn
+    createTodo(title: String, desc: String): MutationReturn
+    deleteTodo(id: String): MutationReturn
   }
 
-  type mutationReturn {
+  type MutationReturn {
     message: String
-    to_do: Todo
+    todo: Todo
   }
 `;
 

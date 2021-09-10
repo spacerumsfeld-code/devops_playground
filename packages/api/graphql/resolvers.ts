@@ -13,31 +13,37 @@ export const resolvers = {
     },
   },
   Mutation: {
-    newTodo: async (
+    createTodo: async (
       _root: any,
       args: any
-    ): Promise<{ message: string; to_do: ITodo }> => {
+    ): Promise<{ message: string; todo: ITodo } | undefined> => {
+      console.log("NEW TODO ARGUMENTS:", args);
       try {
         const toDo = new Todos({
           title: args.title,
           desc: args.desc,
-          extra_credit: args.extra_credit,
         });
         const newTodo: ITodo = await toDo.save();
+        console.log("NEW TODO COMPLETE:", newTodo);
         return {
           message: "New To-do successfully created",
-          to_do: newTodo,
+          todo: newTodo,
         };
       } catch (error) {
         console.log(error);
       }
     },
-    deleteTodo: async (_root: any, args: any) => {
+    deleteTodo: async (
+      _root: any,
+      args: any
+    ): Promise<{ message: string; todo: ITodo } | undefined> => {
+      console.log(args);
       try {
         const deletedTodo = await Todos.findByIdAndRemove(args.id);
+        console.log(deletedTodo);
         return {
           message: "Successfully deleted todo",
-          to_do: deletedTodo,
+          todo: deletedTodo,
         };
       } catch (error) {
         console.log(error);

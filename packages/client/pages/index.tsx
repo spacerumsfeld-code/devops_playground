@@ -1,38 +1,27 @@
 import type { NextPage } from "next";
 import styled from "styled-components";
 import Colors from "../styles/Colors";
-import GridContainer from "../elements/GridContainer";
-import LearningCard from "../elements/LearningCard";
+import TodoList from "./components/TodoList";
+import TodoForm from "./components/TodoForm";
+import Text from "./elements/Text";
 import { initializeApollo } from "./graphql/apolloClient";
-import { TODOS } from "./graphql/queries/todo.getAllTodos.query";
+import GET_TODOS from "./graphql/queries/getAllTodos.query";
 
 const AppContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 100%;
-  text-align: center;
+  justify-content: center;
   align-items: center;
 `;
 
 const Home: NextPage = (props: any) => {
-  const todos = props.initialApolloState.ROOT_QUERY.todos;
-
   return (
     <AppContainer>
-      <h1>A Good Old Time With styled-components and more!</h1>
-      <GridContainer
-        height="100%"
-        width="80%"
-        columns="repeat(1, 1fr)"
-        background={Colors.Grey4}
-        padding="8px"
-      >
-        {todos?.map((learningItem: any) => (
-          <LearningCard key={learningItem.id}>
-            {learningItem.title}: {learningItem.desc}
-          </LearningCard>
-        ))}
-      </GridContainer>
+      <Text color={Colors.Blurple} align="center">
+        DevOps Playground Disguised as Yet Another Todo App
+      </Text>
+      <TodoForm />
+      <TodoList todos={props.todos} />
     </AppContainer>
   );
 };
@@ -40,13 +29,13 @@ const Home: NextPage = (props: any) => {
 export const getStaticProps = async () => {
   const apolloClient = initializeApollo();
 
-  await apolloClient.query({
-    query: TODOS,
-  });
+  const {
+    data: { todos },
+  } = await apolloClient.query({ query: GET_TODOS });
 
   return {
     props: {
-      initialApolloState: apolloClient.cache.extract(),
+      todos,
     },
   };
 };
