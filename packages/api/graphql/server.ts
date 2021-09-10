@@ -5,7 +5,7 @@ import mongoose from "mongoose";
 
 const connectToMongo = async () => {
   /** localhost='database' when dockerizing and vice versa */
-  const MONGO_URL: string = "mongodb://database:27017/dev_ops_playground";
+  const MONGO_URL: string = "mongodb://database:27017/devops_playground";
   try {
     const connection = await mongoose.connect(MONGO_URL);
     console.log("Connected to database");
